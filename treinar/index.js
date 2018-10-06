@@ -9,7 +9,14 @@ app.use(bodyParser.urlencoded());
 app.use(db('mongodb://alineFv:Academia9@ds223653.mlab.com:23653/contato1'));
 
 app.get('/',(req,res)=>{
-    res.render('home');
+    req.db.collection('contatosAmigos').find().toArray((erro, dados) => {
+        if(erro){
+            res.render('erro');
+            return;
+        }
+        
+        res.render('home', {'lista': dados});
+    });
 });
 
 app.post('/', ( req , res ) => {
@@ -19,17 +26,6 @@ app.post('/', ( req , res ) => {
             resposta.render('erro');
             return;
         }
-    res.render('home');
-    });
-});
-app.get('/home', (req, res) => {
-    req.db.collection('contatosAmigos').find().toArray((erro, dados) => {
-        if(erro){
-            res.render('erro');
-            return;
-        }
-        
-        res.render('contatosAmigos', {'lista': dados});
     });
 });
 
