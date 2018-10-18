@@ -1,0 +1,90 @@
+body{
+    margin: 0;
+    background-color: linear-gradient(blue,white);
+}
+header{
+    height: 50px;
+    margin:0;
+    background-color: bisque;
+}
+
+section{
+    display: flex;
+    justify-content: space-around;
+}
+#team-cards{
+ display: flex;
+ justify-content: center;
+}
+.front{
+    color:black;
+    display: flex;
+}
+.more{
+    position: relative;
+    top: 10px;
+    display: flex;
+    left: -15px;
+}
+.team-subtitle{
+    position: relative;
+    top: 188px;
+    display: flex;
+    left: -186px;
+    height: 42px;
+}
+.team-title{
+    position: relative;
+    top: 18px;
+    display: flex;
+    left: -156px;
+    height: 42px;
+}
+.cardimg{
+    z-index: -1;
+}
+.front{
+    z-index:1;
+}
+.back{
+    background-color: blueviolet;
+    position: relative;
+    bottom: 231px;
+    z-index:-2;
+}
+.flip-container:hover .back {
+    animation: 2s inf linear;
+}
+  .flip-container:hover .front {
+    animation: 2s inicial linear;
+}
+
+.flip-container, .front, .back {
+  width: 210px;
+  height: 210px;
+  margin: 20px 20px 20px 0;
+}
+@keyframes inf{
+ 0%{
+    -webkit-transform: rotateY(160deg);
+            transform: rotateY(160deg);
+            z-index:-2;
+  }
+  100%{
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg); 
+    z-index:1;
+  }
+}
+@keyframes inicial{
+    0%{
+       -webkit-transform: rotateY(0deg);
+               transform: rotateY(0deg);
+               z-index:-2;; 
+     }
+     100%{
+       -webkit-transform: rotateY(160deg);
+       transform: rotateY(160deg);
+       z-index:1;
+     }
+   }
